@@ -22,6 +22,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name="com.outerthoughts.notezap.WidgetProvider"
+            android:label="@string/widget_title" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+
+        <activity
+            android:name="com.outerthoughts.notezap.EnterZapActivity"
+            android:label="@string/title_activity_enter_zap" >
+        </activity>
     </application>
+    <!--
+<receiver android:name=".SampleWidgetProvider41_1" android:label="@string/app_widget_4_1">
+    <intent-filter>
+        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+    </intent-filter>
+    <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_provider_4_1" />
+</receiver>
+    -->
 
 </manifest>

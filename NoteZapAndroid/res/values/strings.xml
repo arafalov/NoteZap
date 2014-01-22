@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">NoteZap</string>
+    <string name="app_name">_NoteZap</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="widget_title">_NoteZap Widget</string>
+    <string name="button_send_title">Send</string>
+    <string name="title_activity_enter_zap">EnterZapActivity</string>
 
 </resources>
