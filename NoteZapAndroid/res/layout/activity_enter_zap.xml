@@ -15,7 +15,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:ems="10" >
+        android:ems="10"
+        android:inputType="textMultiLine" >
 
         <requestFocus />
     </EditText>
@@ -27,6 +28,6 @@
         android:layout_alignRight="@+id/zapEditText"
         android:layout_below="@+id/zapEditText"
         android:layout_marginTop="20dp"
-        android:text="Send" />
+        android:text="Send Now" />
 
 </RelativeLayout>
