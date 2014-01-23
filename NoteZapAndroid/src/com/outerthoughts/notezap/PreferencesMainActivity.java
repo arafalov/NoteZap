@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
-public class WidgetActivity extends Activity {
+public class PreferencesMainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_widget);
+		setContentView(R.layout.activity_preferences_main);
 	}
 
 	@Override
