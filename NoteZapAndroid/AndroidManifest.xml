@@ -41,7 +41,13 @@
             android:name="com.outerthoughts.notezap.EnterZapActivity"
             android:label="@string/title_activity_enter_zap" >
         </activity>
-        <service android:name="SendIntentService"></service>
+        <service android:name="SendIntentService">
+        </service>
+        <receiver android:name="NetworkStateChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
     </application>
     <!--
 <receiver android:name=".SampleWidgetProvider41_1" android:label="@string/app_widget_4_1">
