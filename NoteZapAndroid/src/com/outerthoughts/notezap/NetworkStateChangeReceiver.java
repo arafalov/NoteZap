@@ -12,6 +12,9 @@ public class NetworkStateChangeReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		Log.i("NoteZap", "Network state changed. Thread id: " + Thread.currentThread().getId() + ". Network is: " + (isNetworkAvailable(context)?"available":"not available"));
+		Intent sendZap = new Intent(context, BatchedSendService.class);
+		sendZap.setAction(BatchedSendService.ACTION_CHECK_NETWORK);
+		context.startService(sendZap);
 
 	}
 

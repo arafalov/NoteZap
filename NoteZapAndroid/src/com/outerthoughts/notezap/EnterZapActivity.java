@@ -33,6 +33,12 @@ public class EnterZapActivity extends Activity {
 						textValue);
 
 				Context context = getApplicationContext();
+				Intent sendZap = new Intent(context, BatchedSendService.class);
+				sendZap.setAction(BatchedSendService.ACTION_ADD_ZAP);
+				sendZap.putExtra(BatchedSendService.PARAM_IN_ZAP_TEXT, textValue);
+				startService(sendZap);
+				Log.i("NoteZap", "Batch service started");
+/*
 				Notification.Builder mBuilder =
 						new Notification.Builder(context)
 							.setNumber(1)
@@ -55,6 +61,8 @@ public class EnterZapActivity extends Activity {
 				
 //				Toast toast = Toast.makeText(context, "Button pressed: " + text.getText(), Toast.LENGTH_SHORT);
 //				toast.show();
+ */ 
+ 
 				finish();
 			}
 		});

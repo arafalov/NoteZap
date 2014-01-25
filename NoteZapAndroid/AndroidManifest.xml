@@ -48,6 +48,7 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
+        <service android:name="BatchedSendService"></service>
     </application>
     <!--
 <receiver android:name=".SampleWidgetProvider41_1" android:label="@string/app_widget_4_1">
