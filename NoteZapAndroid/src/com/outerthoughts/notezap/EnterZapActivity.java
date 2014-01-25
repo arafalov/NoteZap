@@ -13,7 +13,6 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class EnterZapActivity extends Activity {
 
@@ -27,10 +26,11 @@ public class EnterZapActivity extends Activity {
 		zapSend.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View v) {
-				EditText text = ((EditText)findViewById(R.id.zapEditText));
+				EditText textField = ((EditText)findViewById(R.id.zapEditText));
+				String textValue = textField.getText().toString();
 				
 				Log.i("NoteZap", "Button is clicked with text: " + 
-						text.getText().toString());
+						textValue);
 
 				Context context = getApplicationContext();
 				Notification.Builder mBuilder =
@@ -39,7 +39,7 @@ public class EnterZapActivity extends Activity {
 							.setAutoCancel(true)
 							.setSmallIcon(R.drawable.ic_launcher)
 							.setContentTitle("Sending Zap")
-							.setContentText(text.getText().toString());
+							.setContentText(textValue);
 				Intent notifyIntent = new Intent(context, PreferencesMainActivity.class);
 				notifyIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
 				PendingIntent pIntent = PendingIntent.getActivity(context, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -49,9 +49,12 @@ public class EnterZapActivity extends Activity {
 				mNotificationManager.notify(1, mBuilder.build());
 				Log.i("NoteZap", "Notifiction setup");
 				
+				Intent msgIntent = new Intent(context, SendIntentService.class);
+				msgIntent.putExtra(SendIntentService.PARAM_IN_ZAP_TEXT, textValue);
+				startService(msgIntent);
 				
-				Toast toast = Toast.makeText(context, "Button pressed: " + text.getText(), Toast.LENGTH_SHORT);
-				toast.show();
+//				Toast toast = Toast.makeText(context, "Button pressed: " + text.getText(), Toast.LENGTH_SHORT);
+//				toast.show();
 				finish();
 			}
 		});

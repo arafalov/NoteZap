@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="17"
         android:targetSdkVersion="19" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -39,6 +40,7 @@
             android:name="com.outerthoughts.notezap.EnterZapActivity"
             android:label="@string/title_activity_enter_zap" >
         </activity>
+        <service android:name="SendIntentService"></service>
     </application>
     <!--
 <receiver android:name=".SampleWidgetProvider41_1" android:label="@string/app_widget_4_1">
