@@ -36,16 +36,28 @@ public class SendIntentService extends IntentService {
 		String zap = intent.getStringExtra(PARAM_IN_ZAP_TEXT);
 //		queue.push(zap);
 		
-		if (isNetworkAvailable())
+		while (true)
 		{
-			//catch failure to send
-			sendZapNow(zap);
+			if (isNetworkAvailable())
+			{
+				//catch failure to send
+				sendZapNow(zap);
+				break; //we are done.
+			}
+			else
+			{
+//				Log.i("NoteZap", "Network is not available. Wait for notification");
+				Log.i("NoteZap", "Network is not available. Sleep for 10 secs and try again. Thread id: " + Thread.currentThread().getId());
+				try {
+					Thread.sleep(10*1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+				//TODO: create broadcast listener, if possible?
+			}
 		}
-		else
-		{
-			Log.i("NoteZap", "Network is not avaible. Wait for notification");
-			//TODO: create broadcast listener, if possible?
-		}
+		Log.i("NoteZap", "Done with zap: " + zap);
 		
 	}
 	
